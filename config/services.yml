@@ -1,0 +1,10 @@
+services:
+    orynider.translatetitle.listener:
+        class: orynider\translatetitle\event\listener
+        arguments:
+            - '@auth'
+            - '@request'
+            - '@template'
+            - '@user'
+        tags:
+            - { name: event.listener }

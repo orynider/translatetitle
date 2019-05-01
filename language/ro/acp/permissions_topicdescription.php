@@ -38,5 +38,5 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'ACL_F_TOPIC_TITLE'		=> 'Can translate topics',
+	'ACL_F_TOPIC_TITLE'		=> 'Poate traduce topice',
 ));

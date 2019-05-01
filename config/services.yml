@@ -7,6 +7,6 @@ services:
             - '@template'
             - '@user'
             - '@language'
-            - '@dbal.conn'
+            - '@dbal.conn' 
         tags:
             - { name: event.listener }

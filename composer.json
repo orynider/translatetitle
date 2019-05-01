@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "Add the possibility of being able to translate topic titles. Based on permissions per forum. Titles are translated in viewtopic, viewforum, search results (only display results as topic) and MCP forum.",
 	"homepage": "https://github.com/orynider/translatetitle",
-	"version": "0.9.3",
+	"version": "1.0.0",
 	"license": "GPL-2.0",
 	"authors": [
 		{

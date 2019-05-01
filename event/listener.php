@@ -343,5 +343,3 @@ class listener implements EventSubscriberInterface
 		}
 	}
 }
-
-

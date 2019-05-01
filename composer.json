@@ -4,7 +4,7 @@
 	"description": "Add the possibility of being able to translate topic titles. Based on permissions per forum. Titles are translated in viewtopic, viewforum, search results (only display results as topic) and MCP forum.",
 	"homepage": "https://github.com/orynider/translatetitle",
 	"version": "1.0.0",
-	"license": "GPL-2.0",
+	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "FlorinCB",

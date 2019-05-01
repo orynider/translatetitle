@@ -88,6 +88,8 @@ class listener implements EventSubscriberInterface
 			'core.viewforum_modify_topicrow'		=> 'modify_topicrow',
 			'core.search_modify_tpl_ary'	=> 'search_modify_tpl_ary',
 			'core.mcp_view_forum_modify_topicrow'	=> 'mcp_view_forum_modify_topicrow',
+			'core.display_forums_modify_category_template_vars'	=> 'display_forums_modify_category_template_vars',
+			'core.display_forums_modify_template_vars'	=> 'display_forums_modify_template_vars',
 		);
 	}
 
@@ -217,6 +219,48 @@ class listener implements EventSubscriberInterface
 		}
 	}
 	
+	public function display_forums_modify_category_template_vars($event)
+	{
+		$row = $event['row'];
+		if (!empty($row['forum_last_post_subject']))
+		{
+			$this->user->add_lang_ext('orynider/translatetitle', 'common');
+			
+			$row['forum_last_post_subject'] = !empty($this->user->lang($row['forum_last_post_subject'])) ? $this->user->lang($row['forum_last_post_subject']) : censor_text($row['forum_last_post_subject']);
+			
+			//$this->template->assign_var('LAST_POST_SUBJECT', $row['forum_last_post_subject']);
+			$event['row'] = $row;
+		}
+	}
+	
+	public function display_forums_modify_template_vars($event)
+	{
+		$row = $event['row'];
+		if (!empty($row['forum_last_post_subject']))
+		{
+			$this->user->add_lang_ext('orynider/translatetitle', 'common');	
+			
+			$last_post_subject = $row['forum_last_post_subject'] = !empty($this->user->lang($row['forum_last_post_subject'])) ? $this->user->lang($row['forum_last_post_subject']) : censor_text($row['forum_last_post_subject']);
+			
+			// Create last post link information, if appropriate
+			if ($row['forum_last_post_id'])
+			{
+				$last_post_subject_truncated = truncate_string($last_post_subject, 30, 255, false, $this->user->lang['ELLIPSIS']);
+			}
+			else
+			{
+				$last_post_subject_truncated = '';
+			}				
+			
+			$event['forum_row'] = array_merge($event['forum_row'], array(
+				'LAST_POST_SUBJECT'	=> $last_post_subject,
+				'LAST_POST_SUBJECT_TRUNCATED'	=> $last_post_subject_truncated,
+			));	
+
+		}
+		$event['row'] = $row;
+	}
+	
 	public function mcp_view_forum_modify_topicrow($event)
 	{
 		$row = $event['row'];
@@ -306,3 +350,4 @@ class listener implements EventSubscriberInterface
 		}
 	}
 }
+

@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package Topic title
+* @package Translate Topic title
 * @copyright (c) 2016 orynider
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
@@ -79,8 +79,7 @@ class listener implements EventSubscriberInterface
 			'core.posting_modify_template_vars'	=> 'topic_data_topic_title',
 			'core.posting_modify_submission_errors'	=> 'topic_title_add_to_post_data',
 			'core.posting_modify_submit_post_before'	=> 'topic_title_add',
-			'core.posting_modify_message_text'	=> 'modify_message_text',
-			'core.submit_post_modify_sql_data'	=> 'submit_post_modify_sql_data',
+			'core.posting_modify_message_text'	=> 'posting_modify_message_text',
 			'core.viewtopic_modify_page_title'		=> 'topic_title_add_viewtopic',
 			'core.viewtopic_assign_template_vars_before'	=> 'assign_template_vars_before',
 			'core.viewtopic_modify_post_action_conditions'	=> 'modify_post_action_conditions',
@@ -146,27 +145,21 @@ class listener implements EventSubscriberInterface
 	}
 
 	//First
-	public function modify_message_text($event)
+	public function posting_modify_message_text($event)
 	{
 		$this->user->add_lang_ext('orynider/translatetitle', 'common');
-		$event['post_data']['topic_title'] = (null !== $this->user->lang($event['post_data']['topic_title'])) ? $this->user->lang($event['post_data']['topic_title']) : censor_text($event['post_data']['topic_title']);
+		
+		$mode = $event['mode'];
+		$post_data = $event['post_data'];
+		$topic_title = $event['post_data']['post_subject'];
+				
+		$topic_title = $event['post_data']['post_subject'] = (null !== $this->user->lang($topic_title)) ? $this->user->lang($topic_title) : censor_text($topic_title);
+		
 		$event['post_data'] = array_merge($event['post_data'], array(
-			'topic_title'	=> $this->request->variable('topic_title', $event['post_data']['topic_title'], true),
+			'post_subject'	=> $this->request->variable('topic_title', $topic_title, true),
 		));
-	}
-
-	public function submit_post_modify_sql_data($event)
-	{
-		/*
-		$mode = $event['post_mode'];
-		$topic_title = $event['data']['topic_title'];
-		$data_sql = $event['sql_data'];
-		if (in_array($mode, array('post', 'edit_topic', 'edit_first_post')))
-		{
-			$data_sql[topics_table]['sql']['topic_title'] = $topic_title;
-		}
-		$event['sql_data'] = $data_sql;
-		*/
+		
+		$event['post_data'] = $post_data;
 	}
 
 	public function topic_title_add_viewtopic($event)
@@ -350,4 +343,5 @@ class listener implements EventSubscriberInterface
 		}
 	}
 }
+
 

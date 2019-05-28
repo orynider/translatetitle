@@ -24,6 +24,6 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'TOPIC_TITLE'				=> 'Topic title',
-	'TOPIC_TITLE_3110'	=> 'This extension requires at least phpBB version 3.1.10.  Please update your version of the forum software.',
+	'TOPIC_TITLE'					=> 'Topic title',
+	'TRANSLATE_TOPIC_TEST'	=> 'Topic title to test translatetitle extension',	
 ));

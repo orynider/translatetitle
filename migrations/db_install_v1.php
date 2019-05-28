@@ -9,25 +9,12 @@
 
 namespace orynider\translatetitle\migrations;
 
-class v1 extends \phpbb\db\migration\migration
+class db_install_v1 extends \phpbb\db\migration\migration
 {
 	static public function depends_on()
 	{
-		return array('\phpbb\db\migration\data\v310\dev');
+		return array('\phpbb\db\migration\data\v320\dev');
 	}
-
-	/*
-	public function update_schema()
-	{
-		return array(
-			'change_columns'    => array(
-				$this->table_prefix . 'topics'        => array(
-					'topic_title'	=> array('text_uni', null),
-				),
-			),
-		);
-	}
-	*/
 	
 	public function update_data()
 	{
@@ -41,3 +28,4 @@ class v1 extends \phpbb\db\migration\migration
 		);
 	}
 }
+

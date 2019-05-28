@@ -26,8 +26,8 @@ if ( !isset($lang) )
 }
 
 $lang = array_merge( $lang, array( // #
-	'TOPIC_TITLE'		=> 'Titlul topicului',
-	'TOPIC_TITLE_3110'	=> 'Această extensie necesită cel puţin phpBB versiunea 3.1.10. Vă rugăm să updataţi versiunea dvs. de software forum.',
+	'TOPIC_TITLE'					=> 'Titlul topicului',
+	'TRANSLATE_TOPIC_TEST'	=> 'Titlu topic de testare a extensiei translatetitle',	
 ));
 
 //

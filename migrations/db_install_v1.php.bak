@@ -28,3 +28,4 @@ class db_install_v1 extends \phpbb\db\migration\migration
 		);
 	}
 }
+

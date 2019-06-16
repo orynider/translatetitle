@@ -26,11 +26,7 @@ if ( !isset($lang) )
 }
 
 $lang = array_merge( $lang, array( // #
-	'TOPIC_TITLE'					=> 'Titlul topicului',
+	'THE_TOPIC_TITLE'			=> 'Titlul subiectului',
 	'TRANSLATE_TOPIC_TEST'	=> 'Titlu topic de testare a extensiei translatetitle',	
 ));
 
-//
-// That's all Folks!
-// -------------------------------------------------
-?>

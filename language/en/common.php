@@ -24,6 +24,6 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'TOPIC_TITLE'					=> 'Topic title',
+	'THE_TOPIC_TITLE'			=> 'The topic title',
 	'TRANSLATE_TOPIC_TEST'	=> 'Topic title to test translatetitle extension',	
 ));
